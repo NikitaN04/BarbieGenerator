@@ -1,3 +1,4 @@
+// 1. STAGE 2. MEDDELANDE 3. COMMITT
 //Imports
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';

@@ -1,16 +1,74 @@
-# React + Vite
+# Midnight Sun Dreamhouse
+One Paragraph of project description goes here
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+### Prerequisites
+You need to install the following software before running the project:
+- Vite
+- npm
+- Git
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+### Installing
+Run the following commands in a Terminal(e.g. Git Bash):
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone the repository.
+```
+git clone https://github.com/NikitaN04/BarbieGenerator.git
+```
+
+2. Navigate to the project folder
+```
+cd my-app
+```
+
+3. Install depenencies
+```
+npm install
+```
+
+4. Start the development server
+```
+npm run dev
+```
+
+The application should now be running locally.
+Open the localhost link shown in the terminal.
+
+
+## Envioment variables
+Create a .env file in the root directory and add your API-key.
+
+API-NYCKEL-HÄR
+
+
+## Built With
+React — Frontend library
+Vite — Development/build tool
+React Bootstrap — React Bootstrap components
+Google GenAI API — AI functionality
+
+
+## Versioning
+This project uses Git and GitHub for version controll.
+
+
+## Authors
+* Alexandra Szücs**
+* Nikita Nilsson
+* Louise Adlercreutz Holter
+
+
+## License
+This project is licensed under the MIT License - see the [LICENSE.md] file for details.
+
+
+## Acknowledgments
+* OpenAI
+* Inspiration from Barbie
+* Inspiration from Midnight Sun - Zara Larsson Album
+* PurpleBooth/README-Template: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2.js
