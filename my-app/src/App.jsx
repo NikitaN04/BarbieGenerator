@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { Routes, Route } from "react-router";
+import AddPersonaForm from './components/AddPersonaForm/AddPersonaForm';
 
 
 //Byggt med Bootstrap
@@ -51,6 +52,7 @@ const App = () => {
             {/* Route till generatorn */}
             <Route path="/generator" element={<>
               <p>Här kommer mer till generatorn</p>
+              <AddPersonaForm></AddPersonaForm>
             </>}>
             </Route>
 
