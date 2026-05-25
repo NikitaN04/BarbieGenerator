@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { Routes, Route } from "react-router";
 import AddPersonaForm from './components/AddPersonaForm/AddPersonaForm';
+import GradientText from './components/GradientText/GradientText';
 
 
 //Byggt med Bootstrap
@@ -16,7 +17,13 @@ const App = () => {
       {/* Rad 1 - heading*/}
       <Row>
         <Col>
-          <h1> Midnight Sun Dreamhouse</h1>
+        <GradientText
+          colors={["#ff2768", "#ff33f9", "#fff27d"]}
+          animationSpeed={3}
+          showBorder={false}
+          >
+          Midnight Sun Dreamhouse
+        </GradientText>
         </Col>
       </Row>
       {/* Rad 2 - b  readcrums*/}
