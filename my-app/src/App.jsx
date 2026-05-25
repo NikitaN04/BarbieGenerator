@@ -22,16 +22,16 @@ const App = () => {
       <Row>
         <Col>
           <Breadcrumb>
-            <Breadcrumb.Item href="#">
+            <Breadcrumb.Item href="/">
               Start
             </Breadcrumb.Item>
-            <Breadcrumb.Item href="#">
+            <Breadcrumb.Item href="/generator">
               Generator
             </Breadcrumb.Item>
-            <Breadcrumb.Item href="#">
+            <Breadcrumb.Item href="/gallery">
               Gallery
             </Breadcrumb.Item>
-            <Breadcrumb.Item href="#">
+            <Breadcrumb.Item href="/about-us">
               About Us
             </Breadcrumb.Item>
           </Breadcrumb>
@@ -40,7 +40,32 @@ const App = () => {
       {/* Rad 3 - introduction info*/}
       <Row>
         <Col>
-          <p> Här kan du svara på frågor om din livsstil (bor, ålder, jobb, hobbys), favoritfärger och drömmar, varpå OpenAI genererar en personlig "Barbie-persona" och beskriver din perfekta Dreamhouse liv. </p>
+          <Routes>
+            {/* Route till startsidan */}
+            <Route path="/" element={<>
+              <p> Här kan du svara på frågor om din livsstil (bor, ålder, jobb, hobbys), favoritfärger och drömmar, varpå OpenAI genererar en personlig "Barbie-persona" och beskriver din perfekta Dreamhouse liv. </p>
+
+            </>}> 
+            </Route>
+
+            {/* Route till generatorn */}
+            <Route path="/generator" element={<>
+              <p>Här kommer mer till generatorn</p>
+            </>}>
+            </Route>
+
+            {/* Route till galleriet */}
+            <Route path="/gallery" element={<>
+              <p>Här kommer mer till galleriet</p>
+            </>}>
+            </Route>
+
+            {/* Route till om oss */}
+            <Route path="/about-us" element={<>
+              <p>Här kommer mer till about us</p>
+            </>}>
+            </Route>
+          </Routes>
         </Col>
       </Row>
     </Container>
