@@ -8,8 +8,7 @@ import { Routes, Route } from "react-router";
 import AddPersonaForm from './components/AddPersonaForm/AddPersonaForm';
 import GradientText from './components/GradientText/GradientText';
 import BreadCrumbs from './components/BreadCrumbs/BreadCrumbs';
-import Button from 'react-bootstrap/Button';
-import './App.css'
+import HeroSection from './components/HeroSection/HeroSection';
 
 //Byggt med Bootstrap
 const App = () => {
@@ -38,29 +37,27 @@ const App = () => {
         <Col>
           <Routes>
             {/* Route till startsidan */}
-            <Route path="/" element={<>
-              <p> Här kan du svara på frågor om din livsstil (bor, ålder, jobb, hobbys), favoritfärger och drömmar, varpå OpenAI genererar en personlig "Barbie-persona" och beskriver din perfekta Dreamhouse liv. </p>
-              <Button size="lg" className="glow-on-hover">LET'S GET STARTED</Button>
-            </>}> 
+            <Route path="/" element={
+              <HeroSection></HeroSection>
+              }>
             </Route>
 
             {/* Route till generatorn */}
-            <Route path="/generator" element={<>
-              <p>Här kommer mer till generatorn</p>
+            <Route path="/generator" element={
               <AddPersonaForm></AddPersonaForm>
-            </>}>
+              }>
             </Route>
 
             {/* Route till galleriet */}
             <Route path="/gallery" element={<>
               <p>Här kommer mer till galleriet</p>
-            </>}>
+              </>}>
             </Route>
 
             {/* Route till om oss */}
             <Route path="/about-us" element={<>
               <p>Här kommer mer till about us</p>
-            </>}>
+              </>}>
             </Route>
           </Routes>
         </Col>
