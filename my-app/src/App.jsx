@@ -8,6 +8,8 @@ import { Routes, Route } from "react-router";
 import AddPersonaForm from './components/AddPersonaForm/AddPersonaForm';
 import GradientText from './components/GradientText/GradientText';
 import BreadCrumbs from './components/BreadCrumbs/BreadCrumbs';
+import Button from 'react-bootstrap/Button';
+import './App.css'
 
 //Byggt med Bootstrap
 const App = () => {
@@ -38,7 +40,7 @@ const App = () => {
             {/* Route till startsidan */}
             <Route path="/" element={<>
               <p> Här kan du svara på frågor om din livsstil (bor, ålder, jobb, hobbys), favoritfärger och drömmar, varpå OpenAI genererar en personlig "Barbie-persona" och beskriver din perfekta Dreamhouse liv. </p>
-
+              <Button size="lg" className="glow-on-hover">LET'S GET STARTED</Button>
             </>}> 
             </Route>
 
