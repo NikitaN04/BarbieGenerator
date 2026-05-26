@@ -15,4 +15,11 @@
 
 .submit-btn:hover {
     background-color: rgb(208, 20, 255);
+    color: white;
+}
+
+.submit-btn:active {
+    /*important på dessa eftersom vi stylade om knappen själva, kanske kunde byggt en egen knapp från början när man är efterklok*/
+    background-color: rgb(132, 6, 163) !important;
+    color: white !important;
 }

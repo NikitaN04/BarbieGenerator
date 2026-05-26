@@ -5,12 +5,20 @@ import './AddPersonaForm.css'
 
 function AddPersonaForm() {
 
-    const [userName, setuserName] = useState("");
-    const [userFavoriteColor, setuserFavoriteColor] = useState("");
-    const [userHobby, setuserHobby] = useState("");
-    const [userDreams, setuserDreams] = useState("");
-    const [userVibe, setuserVibe] = useState("0");
+  const [userName, setuserName] = useState("");
+  const [userFavoriteColor, setuserFavoriteColor] = useState("");
+  const [userHobby, setuserHobby] = useState("");
+  const [userDreams, setuserDreams] = useState("");
+  const [userVibe, setuserVibe] = useState("0");
 
+  const handleSubmit = (e) => {
+    
+    //inte skicka vidare användarens data
+    e.preventDefault();
+
+
+  }
+  
 
   return (
     <Form>
@@ -69,7 +77,7 @@ function AddPersonaForm() {
         </Form.Select>
       </Form.Group>
 
-      <Button className="submit-btn" type="submit">
+      <Button className="submit-btn" variant="" type="submit" onClick={handleSubmit}>
         Generate my Persona
       </Button>
     </Form>
