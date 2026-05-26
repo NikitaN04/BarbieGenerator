@@ -18,16 +18,16 @@ function AddPersonaForm() {
         <Form.Control 
             placeholder="Namn här..." 
             value={userName}
-            OnChange={e => setuserName(e.target.value)}
+            onChange={e => setuserName(e.target.value)}
         />
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label>Favorit färg\(er\):</Form.Label>
+        <Form.Label>Favorit färg(er):</Form.Label>
         <Form.Control 
-            placeholder="Dina favorit färg(er)..." 
+            placeholder="Ex: lila,rosa,orange..." 
             value={userFavoriteColor}
-            OnChange={e => setuserFavoriteColor(e.target.value)}
+            onChange={e => setuserFavoriteColor(e.target.value)}
         />
       </Form.Group>
 
@@ -36,16 +36,16 @@ function AddPersonaForm() {
         <Form.Control 
             placeholder="Hobby..." 
             value={userHobby}
-            OnChange={e => setuserHobby(e.target.value)}
+            onChange={e => setuserHobby(e.target.value)}
         />
       </Form.Group>
 
       <Form.Group className="mb-3">
         <Form.Label>Drömmar:</Form.Label>
-        <Form.Control 
-            placeholder="Dina drömmar..." 
+        <Form.Control as="textarea" rows={4} 
+            placeholder="Berätta om dina drömmar eller en livsstil du drömmer om..." 
             value={userDreams}
-            OnChange={e => setuserDreams(e.target.value)}
+            onChange={e => setuserDreams(e.target.value)}
         />
       </Form.Group>
 
@@ -53,9 +53,9 @@ function AddPersonaForm() {
         <Form.Label>Vibe:</Form.Label>
         <Form.Select
             value={userVibe}
-            OnChange={e => setuserVibe(e.target.value)}
+            onChange={e => setuserVibe(e.target.value)}
         >
-            <option value="0"> Välj din personas vibe...</option>
+            <option value="0">Ge din persona en vibe...</option>
             <option value="1">Cozy</option>
             <option value="2">Luxury</option>
             <option value="3">Beach Life</option>
@@ -67,7 +67,6 @@ function AddPersonaForm() {
             <option value="9">Dream Core</option>
         </Form.Select>
       </Form.Group>
-
 
       <Button variant="primary" type="submit">
         Generate Persona

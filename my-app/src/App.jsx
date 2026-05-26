@@ -4,11 +4,10 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { Routes, Route } from "react-router";
 import AddPersonaForm from './components/AddPersonaForm/AddPersonaForm';
 import GradientText from './components/GradientText/GradientText';
-
+import BreadCrumbs from './components/BreadCrumbs/BreadCrumbs';
 
 //Byggt med Bootstrap
 const App = () => {
@@ -29,20 +28,7 @@ const App = () => {
       {/* Rad 2 - b  readcrums*/}
       <Row>
         <Col>
-          <Breadcrumb>
-            <Breadcrumb.Item href="/">
-              Start
-            </Breadcrumb.Item>
-            <Breadcrumb.Item href="/generator">
-              Generator
-            </Breadcrumb.Item>
-            <Breadcrumb.Item href="/gallery">
-              Gallery
-            </Breadcrumb.Item>
-            <Breadcrumb.Item href="/about-us">
-              About Us
-            </Breadcrumb.Item>
-          </Breadcrumb>
+            <BreadCrumbs></BreadCrumbs>
         </Col>
       </Row>
       {/* Rad 3 - introduction info*/}
