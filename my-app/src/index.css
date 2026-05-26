@@ -2,6 +2,6 @@ body {
     background-image: url("../src/assets/delfin1.png");
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh;
-    margin: auto;
+    min-height: 100vh;
+    margin: 0%;
 }

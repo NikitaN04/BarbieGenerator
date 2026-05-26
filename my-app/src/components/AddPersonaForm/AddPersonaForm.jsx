@@ -1,6 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
+import './AddPersonaForm.css'
 
 function AddPersonaForm() {
 
@@ -32,9 +33,9 @@ function AddPersonaForm() {
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label>Hobby:</Form.Label>
+        <Form.Label>Hobbys:</Form.Label>
         <Form.Control 
-            placeholder="Hobby..." 
+            placeholder="Hobbys..." 
             value={userHobby}
             onChange={e => setuserHobby(e.target.value)}
         />
@@ -68,8 +69,8 @@ function AddPersonaForm() {
         </Form.Select>
       </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Generate Persona
+      <Button className="submit-btn" type="submit">
+        Generate my Persona
       </Button>
     </Form>
   );

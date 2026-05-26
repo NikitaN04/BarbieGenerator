@@ -1,5 +1,5 @@
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
-
+import './BreadCrumbs.css'
 function BreadCrumbs () {
     return (
      <Breadcrumb>
