@@ -52,6 +52,14 @@ function AddPersonaForm(props) {
 
     //skicka till app
     props.addNewPersona(newPersona);
+
+    //nolställa formuläret
+    setUserName("");
+    setUserFavoriteColor("");
+    setUserHobby("");
+    setUserDreams("");
+    setUserFoods("");
+    setUserVibe("");
   
     console.log(newPersona);
   }
