@@ -23,6 +23,8 @@ const App = () => {
 
     //gamla listan in i ny lista + newPersona sist i listan.
     setPersonasList([...personasList, newPersona]);
+
+    console.log("Personas List i app:", personasList)
   }
 
   return (

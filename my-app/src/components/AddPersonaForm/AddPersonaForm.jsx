@@ -10,7 +10,7 @@ function AddPersonaForm(props) {
   const [userHobby, setUserHobby] = useState("");
   const [userDreams, setUserDreams] = useState("");
   const [userFoods, setUserFoods] = useState("");
-  const [userVibe, setUserVibe] = useState("0");
+  const [userVibe, setUserVibe] = useState("");
 
   //funktion som genererar unikt id
   const generatePersonaId = () => {
@@ -23,18 +23,18 @@ function AddPersonaForm(props) {
     //inte skicka vidare användarens data
     e.preventDefault();
 
-    //skapa en lista med alla sträng-fält för validering INTE userVibe
+    //skapa en lista med alla fält för validering 
     const validateFieldsList = [
       userName,
       userFavoriteColor,
       userHobby,
       userDreams,
-      userFoods
+      userFoods,
+      userVibe
     ];
 
-    //validera att fälten inte är tomma med some() funktionen: https://www.w3schools.com/jsref/jsref_some.asp 
-    //Kollar även userVibe separat 
-    if ((validateFieldsList.some(field => field.trim() === "")) || (userVibe === "0")) {
+    //validera att fälten inte är tomma med some() funktionen: https://www.w3schools.com/jsref/jsref_some.asp  
+    if (validateFieldsList.some(field => field.trim() === "")) {
       alert("All fields must be filled to generate your pesona :)");
       return;
     }
@@ -55,9 +55,10 @@ function AddPersonaForm(props) {
   
     console.log(newPersona);
   }
-  
+
   return (
-    <Form>
+    //placering av onSubmit() här ist för på knapp från w3school:https://www.w3schools.com/react/react_forms_submit.asp
+    <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
         <Form.Label>Name:</Form.Label>
         <Form.Control 
@@ -106,23 +107,23 @@ function AddPersonaForm(props) {
       <Form.Group className="mb-3">
         <Form.Label>Vibe:</Form.Label>
         <Form.Select
-            value={userVibe}
-            onChange={e => setUserVibe(e.target.value)}
+          value={userVibe}
+          onChange={e => setUserVibe(e.target.value)}
         >
-            <option value="0">pick a vibe for your persona...</option>
-            <option value="1">Cozy</option>
-            <option value="2">Luxurious</option>
-            <option value="3">Beach Life</option>
-            <option value="4">Winter Wonderland</option>
-            <option value="5">Fantasy</option>
-            <option value="6">Futuristic</option>
-            <option value="7">Cottage Core</option>
-            <option value="8">Dark Academia</option>
-            <option value="9">Dream Core</option>
+          <option value="">pick a vibe for your persona...</option>
+          <option value="cozy">Cozy</option>
+          <option value="luxurious">Luxurious</option>
+          <option value="beach life">Beach Life</option>
+          <option value="winter wonderland">Winter Wonderland</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="futuristic">Futuristic</option>
+          <option value="cottage core">Cottage Core</option>
+          <option value="dark academia">Dark Academia</option>
+          <option value="dream core">Dream Core</option>
         </Form.Select>
       </Form.Group>
-
-      <Button className="submit-btn" variant="" type="submit" onClick={handleSubmit}>
+      
+      <Button className="submit-btn" variant="" type="submit">
         Generate my Persona
       </Button>
     </Form>
