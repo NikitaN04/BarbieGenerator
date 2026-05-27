@@ -12,6 +12,7 @@ function AddPersonaForm(props) {
   const [userFoods, setUserFoods] = useState("");
   const [userVibe, setUserVibe] = useState("0");
 
+  //funktion som genererar unikt id
   const generatePersonaId = () => {
       return crypto.randomUUID()
   }
@@ -37,24 +38,24 @@ function AddPersonaForm(props) {
       alert("All fields must be filled to generate your pesona :)");
       return;
     }
-  }
 
-  //Skapa nytt persona objekt
-  const newPersona = {
-    "id": generatePersonaId(),
-    "name": userName,
-    "faveColor": userFavoriteColor,
-    "hobby": userHobby,
-    "dreams": userDreams,
-    "faveFoods": userFoods,
-    "vibe": userVibe
-  };
+    //Skapa nytt persona objekt
+    const newPersona = {
+      "id": generatePersonaId(),
+      "name": userName,
+      "faveColor": userFavoriteColor,
+      "hobby": userHobby,
+      "dreams": userDreams,
+      "faveFoods": userFoods,
+      "vibe": userVibe
+    };
 
-  //skicka till app
-  props.addNewPersona(newPersona);
+    //skicka till app
+    props.addNewPersona(newPersona);
   
-  console.log(newPersona);
-
+    console.log(newPersona);
+  }
+  
   return (
     <Form>
       <Form.Group className="mb-3">
