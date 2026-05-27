@@ -9,9 +9,22 @@ import AddPersonaForm from './components/AddPersonaForm/AddPersonaForm';
 import GradientText from './components/GradientText/GradientText';
 import BreadCrumbs from './components/BreadCrumbs/BreadCrumbs';
 import HeroSection from './components/HeroSection/HeroSection';
+import { useState } from 'react';
 
 //Byggt med Bootstrap
 const App = () => {
+
+  const [personasList, setPersonasList] = useState([]);
+
+  //funktion som lägger till ny persona i listan med personas
+  const handleANewPersona = (newPersona) => { //props: objektet med ny personadata vi skapade i addpersonaform
+
+    //TODO: Kommer behöva läsa in gamla resultat från local storage sen också. samt spara ner nya listan till Localstorage
+
+    //gamla listan in i ny lista + newPersona sist i listan.
+    setPersonasList([...personasList, newPersona]);
+  }
+
   return (
     <Container className="d-flex flex-column justify-content-center align-items-center py-4">
       {/* Rad 1 - heading*/}
@@ -44,7 +57,7 @@ const App = () => {
 
             {/* Route till generatorn */}
             <Route path="/generator" element={
-              <AddPersonaForm></AddPersonaForm>
+              <AddPersonaForm addNewPersona={handleANewPersona}></AddPersonaForm>
               }>
             </Route>
 

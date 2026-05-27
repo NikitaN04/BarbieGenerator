@@ -2,6 +2,10 @@ body {
     background-image: url("../src/assets/delfin1.png");
     background-position: center;
     background-repeat: no-repeat;
+
+    /*Hellre lite crop på baggrundsbilden än tomma vita ytor därav cover*/
+    background-size: cover;
+
     min-height: 100vh;
     margin: 0%;
 }
