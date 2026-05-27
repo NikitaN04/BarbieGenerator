@@ -54,7 +54,11 @@ const App = () => {
 
     if (!aiPersonaResult.ok) {
     throw new Error("Något gick fel vid: generatePersonaWithAi(prompt)");
-  }
+    }
+
+    //TODO jasonify parse? 
+    console.log(aiPersonaResult)
+
   }
 
 
