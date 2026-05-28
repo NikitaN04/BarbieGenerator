@@ -11,6 +11,7 @@ import BreadCrumbs from './components/BreadCrumbs/BreadCrumbs';
 import HeroSection from './components/HeroSection/HeroSection';
 import { useState } from 'react';
 import { generatePersonaWithAi } from './api/googleGeminiApi';
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
 
 //Byggt med Bootstrap
 const App = () => {
@@ -19,6 +20,9 @@ const App = () => {
 
   //funktion som lägger till ny persona i listan med personas
   const handleANewPersona = async (newPersona) => { //props: objektet med ny personadata vi skapade i addpersonaform
+
+  //Skapa spinner state för loading.
+  const [isLoading, setIsLoading] = useState(false);
 
     //TODO: Kommer behöva läsa in gamla resultat från local storage sen också. samt spara ner nya listan till Localstorage
 
@@ -50,8 +54,14 @@ const App = () => {
         "imagePrompt": "example data"
       }`;
       
+    //Spinner ska gå igång tills att vi fått svar 
+    setIsLoading(true);  
+
     //Gemini SDK:n gör själva nätverksanropet åt oss -ingen fetch behövs.
     const aiPersonaResult = await generatePersonaWithAi(prompt);
+
+    //Spinner försvinner.
+    setIsLoading(false);
 
     //Log för debug
     console.log(aiPersonaResult)
@@ -88,6 +98,8 @@ const App = () => {
       {/* Rad 3 - introduction info*/}
       <Row>
         <Col>
+        {/*Om isLoading=true så ska Loadingspinner renderas annars inte - placeras den här utanför Routes blir den mer "global", lägger vi den innuti /generator finns spinnern endast där*/}
+          {isLoading && <LoadingSpinner />}
           <Routes>
             {/* Route till startsidan */}
             <Route path="/" element={
