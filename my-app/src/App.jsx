@@ -50,15 +50,17 @@ const App = () => {
         "imagePrompt": "example data"
       }`;
       
+    //Gemini SDK:n gör själva nätverksanropet åt oss -ingen fetch behövs.
     const aiPersonaResult = await generatePersonaWithAi(prompt);
 
-    if (!aiPersonaResult.ok) {
-    throw new Error("Något gick fel vid: generatePersonaWithAi(prompt)");
-    }
-
-    //TODO jasonify parse? 
+    //Log för debug
     console.log(aiPersonaResult)
 
+    //Göra till json object så vi kan nyttja infon vi fick ut. 
+    const personaAsJsonObject = JSON.parse(aiPersonaResult)
+
+    //Log för debug
+    console.log(personaAsJsonObject)
   }
 
 
