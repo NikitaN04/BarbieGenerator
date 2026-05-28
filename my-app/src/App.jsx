@@ -17,12 +17,12 @@ import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
 const App = () => {
 
   const [personasList, setPersonasList] = useState([]);
+  
+  //Skapa spinner state för loading.
+  const [isLoading, setIsLoading] = useState(false);
 
   //funktion som lägger till ny persona i listan med personas
   const handleANewPersona = async (newPersona) => { //props: objektet med ny personadata vi skapade i addpersonaform
-
-  //Skapa spinner state för loading.
-  const [isLoading, setIsLoading] = useState(false);
 
     //TODO: Kommer behöva läsa in gamla resultat från local storage sen också. samt spara ner nya listan till Localstorage
 
