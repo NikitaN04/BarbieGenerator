@@ -11,8 +11,9 @@ import BreadCrumbs from './components/BreadCrumbs/BreadCrumbs';
 import HeroSection from './components/HeroSection/HeroSection';
 import { useState } from 'react';
 import { generatePersonaWithAi, generateDreamHouseWithAi } from './api/googleGeminiApi';
-import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
-import './app.css'
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
+import './app.css';
+import DisplayResultPage from './components/DisplayResultPage/DisplayResultPage';
 
 //Byggt med Bootstrap
 const App = () => {
@@ -131,12 +132,19 @@ const App = () => {
               <HeroSection></HeroSection>
               }>
             </Route>
+
             {/* Route till generatorn */}
             <Route path="/generator" element={
               <div className="spinner-content-area">
                 {isLoading && <LoadingSpinner />}
                 <AddPersonaForm addNewPersona={handleANewPersona}></AddPersonaForm>
               </div>
+              }>
+            </Route>
+
+            {/* Route till att Display resultatet från AI */}
+            <Route path="/result" element={
+              <DisplayResultPage></DisplayResultPage>
               }>
             </Route>
 
