@@ -4,16 +4,15 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Routes, Route } from "react-router";
+import { Routes, Route, useNavigate } from "react-router";
 import AddPersonaForm from './components/AddPersonaForm/AddPersonaForm';
 import GradientText from './components/GradientText/GradientText';
 import BreadCrumbs from './components/BreadCrumbs/BreadCrumbs';
 import HeroSection from './components/HeroSection/HeroSection';
 import { useState } from 'react';
-import { generatePersonaWithAi } from './api/googleGeminiApi';
+import { generatePersonaWithAi, generateDreamHouseWithAi } from './api/googleGeminiApi';
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
 import './app.css'
-
 
 //Byggt med Bootstrap
 const App = () => {
@@ -22,6 +21,9 @@ const App = () => {
 
   //Skapa spinner state för loading.
   const [isLoading, setIsLoading] = useState(false);
+
+  //skapa navigate funktion via useNavigate hook. Använder denna endast eftersom användaren ska skickas vidare utan att ha interagerat. 
+  let navigate = useNavigate();
 
   //funktion som lägger till ny persona i listan med personas
   const handleANewPersona = async (newPersona) => { //props: objektet med ny personadata vi skapade i addpersonaform
@@ -59,22 +61,44 @@ const App = () => {
     //Spinner ska gå igång tills att vi fått svar 
     setIsLoading(true);  
 
-    //Gemini SDK:n gör själva nätverksanropet åt oss -ingen fetch behövs.
-    const aiPersonaResult = await generatePersonaWithAi(prompt);
+    //en try/catch för att samla alla ai anrop och kunna hantera spinner komponenten på ett smidigt sätt
+    try {
+      //Gemini SDK:n (det är det oficiella biblioteket) gör själva nätverksanropet åt oss -ingen fetch behövs.    
+      const aiPersonaResult = await generatePersonaWithAi(prompt);
 
-    //Spinner försvinner.
-    setIsLoading(false);
+      //Göra till json object så vi kan nyttja infon vi fick ut. 
+      const personaAsJsonObject = JSON.parse(aiPersonaResult);
 
-    //Log för debug
-    console.log(aiPersonaResult)
+      //Log för debug
+      console.log(aiPersonaResult);
 
-    //Göra till json object så vi kan nyttja infon vi fick ut. 
-    const personaAsJsonObject = JSON.parse(aiPersonaResult)
+      //skapa image variablen med bildatan i
+      const dreamHouseImageData = await generateDreamHouseWithAi(personaAsJsonObject.imagePrompt);
 
-    //Log för debug
-    console.log(personaAsJsonObject)
+      //Spinner försvinner.
+      setIsLoading(false);
+
+      //Log för debug
+      console.log(personaAsJsonObject)
+
+      //navigera vidare användaren till resultat sidan
+      navigate("/result", {
+        state: {
+          personaStory: personaAsJsonObject.story,
+          dreamHouseImage: dreamHouseImageData
+        }
+      });
+    } catch (myError) {
+      //Error i consolen
+      console.error("Något gick fel vid genereringen:", myError);
+      
+      //Stänga av spinner 
+      setIsLoading(false);
+
+      //Alerta användaren om att något gick fel
+      alert("WOops! Something went wrong while trying to generate your Persona and DreamHouse. The AI probably got too much traffic right now, try again!! <3")
+    }
   }
-
 
 
   return (
