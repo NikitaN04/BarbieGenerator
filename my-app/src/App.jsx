@@ -81,7 +81,7 @@ const App = () => {
       //Log för debug
       console.log(personaAsJsonObject)
 
-      //navigera vidare användaren till resultat sidan
+      //navigera vidare användaren till resultat sidan och skicka med persona storyn och bilddatan in i nästa steg /result. 
       navigate("/result", {
         state: {
           personaStory: personaAsJsonObject.story,
