@@ -1,7 +1,5 @@
 import './HeroSection.css';
-import Button from 'react-bootstrap/Button';
-{/*Denna gör så vi kan länka vidare en användare vid knapptryck*/}
-import { Link } from "react-router";
+import GlowButton from '../GlowButton/GlowButton';
 
 function HeroSection() {
     return (
@@ -11,9 +9,12 @@ function HeroSection() {
               <p>Tell us about your (or your imagined) lifestyle, hobbies, favorite colors, and dreams.</p>
               <p>Then watch the magic happen as we transform your answers into a unique persona and a Dreamhouse created just for you.</p>
               <p>Ready to create a little magic?</p>
-              <Link to="/generator">
-              <Button size="lg" className="glow-on-hover">LET'S GET STARTED</Button>
-              </Link>
+              <GlowButton
+              text="LET'S GET STARTED"
+              to="/generator"
+              className="btn-hero-section"
+              >
+              </GlowButton>
         </div>
     )
 }
