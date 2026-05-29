@@ -12,12 +12,14 @@ import HeroSection from './components/HeroSection/HeroSection';
 import { useState } from 'react';
 import { generatePersonaWithAi } from './api/googleGeminiApi';
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
+import './app.css'
+
 
 //Byggt med Bootstrap
 const App = () => {
 
   const [personasList, setPersonasList] = useState([]);
-  
+
   //Skapa spinner state för loading.
   const [isLoading, setIsLoading] = useState(false);
 
@@ -99,17 +101,18 @@ const App = () => {
       <Row>
         <Col>
         {/*Om isLoading=true så ska Loadingspinner renderas annars inte - placeras den här utanför Routes blir den mer "global", lägger vi den innuti /generator finns spinnern endast där*/}
-          {isLoading && <LoadingSpinner />}
           <Routes>
             {/* Route till startsidan */}
             <Route path="/" element={
               <HeroSection></HeroSection>
               }>
             </Route>
-
             {/* Route till generatorn */}
             <Route path="/generator" element={
-              <AddPersonaForm addNewPersona={handleANewPersona}></AddPersonaForm>
+              <div className="spinner-content-area">
+                {isLoading && <LoadingSpinner />}
+                <AddPersonaForm addNewPersona={handleANewPersona}></AddPersonaForm>
+              </div>
               }>
             </Route>
 
