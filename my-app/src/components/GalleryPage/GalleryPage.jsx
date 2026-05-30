@@ -1,4 +1,4 @@
-import GalleryCircular from '../GalleryCircular/GalleryCircular';
+import CircularGallery from '../CircularGallery/CircularGallery';
 import './GalleryPage.css';
 
 function GalleryPage() {
@@ -17,7 +17,7 @@ function GalleryPage() {
 
     return (
       <div className="gallery-page">
-        <GalleryCircular
+        <CircularGallery
             items={items}
             bend={-1}
             borderRadius={0.1}

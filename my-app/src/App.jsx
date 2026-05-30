@@ -14,6 +14,7 @@ import { generatePersonaWithAi, generateDreamHouseWithAi } from './api/googleGem
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 import './app.css';
 import DisplayResultPage from './components/DisplayResultPage/DisplayResultPage';
+import GalleryPage from './components/GalleryPage/GalleryPage';
 
 //TAS SNART BORT IGEN #####################################
 import { mockAiResponse } from './api/mockdata';
@@ -107,9 +108,6 @@ const App = () => {
 
 
 
-
-
-
     } catch (myError) {
       //Error i consolen
       console.error("Något gick fel vid genereringen:", myError);
@@ -176,7 +174,7 @@ const App = () => {
 
             {/* Route till galleriet */}
             <Route path="/gallery" element={<>
-              <p>Här kommer mer till galleriet</p>
+              <GalleryPage></GalleryPage>
               </>}>
             </Route>
 
