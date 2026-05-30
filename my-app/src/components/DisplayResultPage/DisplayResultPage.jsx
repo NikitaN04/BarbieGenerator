@@ -3,7 +3,8 @@ import GlowButton from '../GlowButton/GlowButton'
 import { useState } from 'react';
 import { Link } from "react-router";
 import { useLocation } from 'react-router';
-import ShinyText from '../ShinyText/ShinyText';'../ShinyText/ShinyText';
+import ShinyText from '../ShinyText/ShinyText';
+import { useSavingContext } from '../../context/SavingContext';
 
 function DisplayResultPage() {
 
@@ -11,26 +12,29 @@ function DisplayResultPage() {
 
     //kolla om personaStory & dreamHouseImage finns i location.state  och lägg i variabler annars {}
     // || {} för vi får ha ett tomt objekt så inte sidan kraschar - lite skyddsnät.
-    const {personaStory, dreamHouseImage} = location.state || {};
+    const {id, name, personaStory, dreamHouseImage} = location.state || {};
+
+    //Hämta in save funktionerna från useSAvingsContext genom Object destructuring (Basic assignment rubrik).
+    //Länk: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring
+    const {saveStory, saveDreamHouse} = useSavingContext();
 
     //Save Knapparna states
     const [personaIsSaved, setPersonaIsSaved] = useState(false);
     const [dreamHouseIsSaved, setDreamHouseIsSaved] = useState(false);
 
     const handleBtnIfPersonaIsSaved = () => {
-        //Kod kommer snart context
+        saveStory(id, name, personaStory);
         console.log("Sparar personan..");
         //Ändra knapp till disabled
         setPersonaIsSaved(true);
     };
 
     const handleBtnIfDreamHouseIsSaved = () => {
-        //Kod kommer snart context
+        saveDreamHouse(id, name, dreamHouseImage)
         console.log("Sparar dream house..");
         //Ändra knapp till disabled
         setDreamHouseIsSaved(true);
     }
-
 
         return (
         <div className='result-container'>

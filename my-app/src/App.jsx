@@ -82,6 +82,8 @@ const App = () => {
       //navigera vidare användaren till resultat sidan och skicka med persona storyn och bilddatan in i nästa steg /result. 
       navigate("/result", {
         state: {
+          id: crypto.randomUUID(),
+          name: newPersona.name,
           personaStory: personaAsJsonObject.story,
           dreamHouseImage: dreamHouseImageData
         }
@@ -99,6 +101,8 @@ const App = () => {
           // Navigera med vår hårdkodade data
           navigate("/result", {
             state: {
+              id: crypto.randomUUID(),
+              name: newPersona.name,
               personaStory: mockAiResponse.story,
               dreamHouseImage: mockAiResponse.mockBase64Image
             }
