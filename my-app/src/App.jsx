@@ -11,13 +11,15 @@ import BreadCrumbs from './components/BreadCrumbs/BreadCrumbs';
 import HeroSection from './components/HeroSection/HeroSection';
 import { useState } from 'react';
 import { generatePersonaWithAi, generateDreamHouseWithAi } from './api/googleGeminiApi';
-import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
-import './app.css'
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
+import './app.css';
+import DisplayResultPage from './components/DisplayResultPage/DisplayResultPage';
+
+//TAS SNART BORT IGEN #####################################
+import { mockAiResponse } from './api/mockdata';
 
 //Byggt med Bootstrap
 const App = () => {
-
-  const [personasList, setPersonasList] = useState([]);
 
   //Skapa spinner state för loading.
   const [isLoading, setIsLoading] = useState(false);
@@ -27,11 +29,6 @@ const App = () => {
 
   //funktion som lägger till ny persona i listan med personas
   const handleANewPersona = async (newPersona) => { //props: objektet med ny personadata vi skapade i addpersonaform
-
-    //TODO: Kommer behöva läsa in gamla resultat från local storage sen också. samt spara ner nya listan till Localstorage
-
-    //gamla listan in i ny lista + newPersona sist i listan.
-    setPersonasList([...personasList, newPersona]);
 
     //Skapa prompten som ska skickas till AI
     const prompt = `
@@ -62,7 +59,8 @@ const App = () => {
     setIsLoading(true);  
 
     //en try/catch för att samla alla ai anrop och kunna hantera spinner komponenten på ett smidigt sätt
-    try {
+    try { 
+      /*
       //Gemini SDK:n (det är det oficiella biblioteket) gör själva nätverksanropet åt oss -ingen fetch behövs.    
       const aiPersonaResult = await generatePersonaWithAi(prompt);
 
@@ -74,7 +72,7 @@ const App = () => {
 
       //skapa image variablen med bildatan i
       const dreamHouseImageData = await generateDreamHouseWithAi(personaAsJsonObject.imagePrompt);
-
+      
       //Spinner försvinner.
       setIsLoading(false);
 
@@ -88,6 +86,30 @@ const App = () => {
           dreamHouseImage: dreamHouseImageData
         }
       });
+      */
+
+
+
+
+
+        // Vi fejkar att API:et tar 2 sekunder på sig så vi kan fortsätta testa LoadingSpinnern också!
+        setTimeout(() => {
+          setIsLoading(false);
+          
+          // Navigera med vår hårdkodade data
+          navigate("/result", {
+            state: {
+              personaStory: mockAiResponse.story,
+              dreamHouseImage: mockAiResponse.mockBase64Image
+            }
+          });
+        }, 2000); 
+
+
+
+
+
+
     } catch (myError) {
       //Error i consolen
       console.error("Något gick fel vid genereringen:", myError);
@@ -131,12 +153,24 @@ const App = () => {
               <HeroSection></HeroSection>
               }>
             </Route>
+
             {/* Route till generatorn */}
             <Route path="/generator" element={
               <div className="spinner-content-area">
+                {/*kallas för Conditional Rendering -> är syntax shortcuts.
+                  isLoading=false: Gör ingenting -> Gå vidare.
+                  isLoading=true: Returnera <LoadingSpinner />.
+                  Vi använder detta eftersom man inte kan skriva hela if-satser inuti return-blocken.
+                  Länk: https://react.dev/learn/conditional-rendering*/}
                 {isLoading && <LoadingSpinner />}
                 <AddPersonaForm addNewPersona={handleANewPersona}></AddPersonaForm>
               </div>
+              }>
+            </Route>
+
+            {/* Route till att Display resultatet från AI */}
+            <Route path="/result" element={
+              <DisplayResultPage></DisplayResultPage>
               }>
             </Route>
 

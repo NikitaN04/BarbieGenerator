@@ -1,0 +1,59 @@
+.result-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/*Gemensam css för sections*/
+.content-card {
+    flex: 1; /* Gör att båda sektionerna tar lika mycket plats */
+    padding: 2rem;
+    border-radius: 20px;
+    color: white;
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(12px); 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); 
+    
+    display: flex;
+    flex-direction: column;
+
+}
+
+.content-card p {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+/*Story card*/
+.content-card-story{
+    align-items: center;
+    text-align: center;
+}
+
+/*Dreamhouse card*/
+.content-card-dreamhouse {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*Dreamhouse Bild*/
+.dreamhouse-img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/*Navigations knapparna boxen*/
+.bottom-navigation {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 2rem;
+}
