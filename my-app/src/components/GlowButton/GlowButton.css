@@ -1,8 +1,9 @@
-/*
+/* 
 Länk till knappens orginal CSS: https://dev.to/webdeasy/top-20-css-buttons-animations-f41
     #1 Hover Glow Effect
 */
 
+/*Gemensam CSS*/
 .glow-on-hover {
     border: none;
     color: #fff;
@@ -65,12 +66,58 @@ Länk till knappens orginal CSS: https://dev.to/webdeasy/top-20-css-buttons-anim
     100% { background-position: 0 0; }
 }
 
+
+/*HersoSection Knapp*/
 .btn-hero-section {
     padding: 1rem 4rem;
     font-size: 1.25rem;
 }
 
+
+
+/*DispalyResultPage knappar*/
 .btn-result-section {
     padding: 0.5rem 1.5rem;
     font-size: 1rem;
+}
+
+/*  :disabled
+    Länk:https://www.w3schools.com/cssref/sel_disabled.php 
+*/
+.glow-on-hover:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: #ccc;
+}
+
+
+/* Stäng av neon-animationen när knappen är inaktiverad */
+.glow-on-hover:disabled::before,
+.glow-on-hover:disabled::after {
+    display: none;
+}
+
+
+
+
+
+/*DisplayResultPage Knappar*/
+.glow-on-hover.result-bottom-nav::after {
+    background: rgb(247, 70, 158);
+}
+
+
+.glow-on-hover.result-bottom-nav:hover,
+.glow-on-hover.result-bottom-nav:hover::after {
+    background: rgb(208, 20, 255);
+}
+
+
+.glow-on-hover.result-bottom-nav:active {
+    background: rgb(132, 6, 163);
+}
+
+/*neon funktion syns*/
+.glow-on-hover.result-bottom-nav:active::after {
+    background: transparent; 
 }
